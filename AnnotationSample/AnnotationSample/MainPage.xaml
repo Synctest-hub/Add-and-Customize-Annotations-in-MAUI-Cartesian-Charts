@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:local="clr-namespace:AnnotationSample"
+             x:Class="AnnotationSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <chart:SfCartesianChart>
+
+        <chart:SfCartesianChart.Title>
+            <Label Text="Average Monthly Temperature" FontAttributes="Bold"
+                   HorizontalTextAlignment="Center" FontSize="20"/>
+        </chart:SfCartesianChart.Title>
+
+        <chart:SfCartesianChart.XAxes>
+            <chart:CategoryAxis/>
+        </chart:SfCartesianChart.XAxes>
+
+        <chart:SfCartesianChart.YAxes>
+            <chart:NumericalAxis Interval="5">
+                <chart:NumericalAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle LabelFormat="0'F" />
+                </chart:NumericalAxis.LabelStyle>
+            </chart:NumericalAxis>
+        </chart:SfCartesianChart.YAxes>
+
+        <chart:SfCartesianChart.Annotations>
+            <chart:ViewAnnotation X1="1.5" Y1="55">
+                <chart:ViewAnnotation.View>
+                    <Image Source="cloudy.png" HeightRequest="100" WidthRequest="90"/>
+                </chart:ViewAnnotation.View>
+            </chart:ViewAnnotation>
+        </chart:SfCartesianChart.Annotations>
+
+        <chart:SplineSeries ItemsSource="{Binding Data}" 
+                            XBindingPath="Month"
+                            YBindingPath="Temperature"/>
+    </chart:SfCartesianChart>
+
+</ContentPage>
